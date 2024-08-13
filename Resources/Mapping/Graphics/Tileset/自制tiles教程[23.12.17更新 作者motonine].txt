@@ -1,0 +1,177 @@
+作者：motonine
+
+
+步骤①
+    进入你的
+
+        Celeste文件夹  -> Content -> Graphics
+
+    复制ForegroundTiles.xml
+    粘贴到你的mod文件夹下
+
+    比如我的地址是
+        Celeste\Mods\Searching\Graphics\motonine
+
+    其中Searching是地图名，motonine是作者名
+
+
+步骤②
+    自制贴图素材，大致有以下几种方法
+    官图的贴图素材是一个48*120的png文件，名字可以任意取
+
+    1.从零开始自己画（如果你的美工水平很高的话）
+        https://github.com/EverestAPI/Resources/wiki/Custom-Tilesets#Tileset-sound-IDs
+        参考这个网址，里面有介绍贴图文件里每个位置代表哪个部分的方块
+        这部分有兴趣的可以自己研究，这里就不展开了
+
+    2.对原有的贴图进行换色处理
+        首先你需要Celeste的贴图素材，然后用Pixel Studio（Steam有免费版）更换颜色
+        这个方法相比方法3会更精细一点，能获得你想要的效果
+
+    3.对原有的贴图进行色调更改（我发明的）
+        用ACDsee免费版打开一个贴图素材，然后选择色彩平衡-色调，拉到你喜欢的颜色停止，保存即可
+        （用Photoshop改也差不多）
+
+    4.已有的蔚蓝贴图素材库
+        官图： Celeste Graphics Dump v1400
+            tile在Gameplay\tilesets里
+        dc社区素材：DiscordAssets
+        草莓酱素材：Celeste Mapping Sprite Resources
+        群文件里均可下载。
+
+    步骤③
+        在你的mod里的Graphics路径下建立Atlases\Gameplay\tilesets文件夹，然后把你做好的素材放到这个文件夹里面，（建议再套上几层文件夹，避免和别人的tile撞车），比如我这里就是
+
+            Celeste\Mods\Searching\Graphics\Atlases\Gameplay\tilesets\yournickname\campaignname\tilesetname
+
+        素材取好名字，比如我模仿马里奥的砖块弄的叫做gold
+
+
+步骤④  
+    用vsc之类的文本编辑器打开打开刚才复制的ForegroundTiles.xml文件（记事本也可以）
+    把下面这行字复制到</Data>前面
+        <Tileset id="w" copy="y" path="yournickname/campaignname/tilesetname" sound="8"/>
+
+    解释一下需要替换的东西
+    第一个引号里的东西（原来是w）需要替换成一个单字符，但是小写字母基本已经被占满了，推荐用大写字母（中文也可以用），比如A
+    第二个引号里的东西（原来是y）是选择你要复制的哪个已经被设置好的tile的设置（如果你的tile贴图是官图样式的，即上文提到过的48*120的png文件，改成z）
+    第三个引号里的东西（原来是一大串）改成你的素材的路径，比如gold
+    第四个引号里的东西（原来是8）指的是踩在上面发出的声音，最下面会给出官图每种对应的编号，你想要哪种填上即可
+
+    你需要加几个素材就复制几行，然后按上面说的填写
+    比如我这里新加了三个素材，就是
+
+        <Tileset id="C" copy="z" path="gold" sound="8"/>
+        <Tileset id="D" copy="z" path="quest" sound="8"/>
+        <Tileset id="E" copy="z" path="scifialt" sound="8"/>
+
+    分别是gold（马里奥砖块）、quest（马里奥问号）、scifialt（科幻风格替换颜色）
+
+
+步骤⑤
+    打开loenn或ahorn，
+    打开你的地图，
+        map-metadata
+    在Foreground Tiles一栏里输入你刚才xml的地址
+    比如我的是Graphics\motonine\ForegroundTiles.xml
+    填路径的时候从Graphics开始就行了，前面的不用
+    然后update，重新进入地图
+
+完成~~~
+
+之后你的新建素材就会显示出来了
+
+做bgtiles基本上是相同的，路径填在Background Tiles一栏就可以了
+
+
+0.null
+1.asphalt
+2.car
+3.dirt
+4.snow
+5.wood
+6.bridge
+7.girder
+8.brick
+9.traffic block
+10.(unused)
+11.dreamblock inactive
+12.dreamblock active
+13.resort wood
+14.resort roof
+15.resort platforms
+16.resort basement
+17.resort laundry
+18.resort boxes
+19.resort books
+20.resort forcefield
+21.resort clutterswitch
+22.resort elevator
+23.cliffside snow
+24.(unused)
+25.cliffside grass
+26.(unused)
+27.cliffside whiteblock
+28.gondola
+29.(unused)
+30.(unused)
+31.(unused)
+32.glass
+33.grass
+34.(unused)
+35.cassette block
+36.core ice
+37.core rock
+38.(unused)
+39.(unused)
+40.glitch
+41.(unused)
+42.internet café
+43.cloud
+44.moon
+
+0.无
+1.沥青路（序章车后边的道路
+2.车
+3.土
+4.雪
+5.木头
+6.桥
+7.钢梁
+8.砖
+9.traffic block
+10.(unused)
+11.未启用时的果冻
+12.启用时的果冻
+13.山庄木头
+14.山庄房顶
+15.山庄移动板
+16.山庄地窖砖
+17.山庄衣物
+18.山庄箱子
+19.山庄书
+20.resort forcefield
+21.山庄清理杂物开关
+22.山庄电梯
+23.山脊雪
+24.(unused)
+25.枯草
+26.(unused)
+27.山脊白块
+28.缆车
+29.(unused)
+30.(unused)
+31.(unused)
+32.玻璃
+33.草
+34.(unused)
+35.节奏块
+36.核心冰块
+37.核心岩石
+38.(unused)
+39.(unused)
+40.故障块
+41.(unused)
+42.网吧（凌波微步.ppt那个房子）
+43.云
+44.月球块
